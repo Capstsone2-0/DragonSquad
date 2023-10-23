@@ -7,6 +7,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
        // Ledger ledger = new Ledger();
-        System.out.println("Hello world!");
+        System.out.println("Welcome ");
     }
 }
