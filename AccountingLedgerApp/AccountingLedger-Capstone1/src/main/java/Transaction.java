@@ -51,6 +51,7 @@ public class Transaction {
         return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
     }
 
+
     class Deposit extends Transaction {
         public Deposit(LocalDate date, LocalTime time, String description, String vendor, double amount) {
             super(date, time, description, vendor, amount);
