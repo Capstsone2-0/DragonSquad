@@ -1,3 +1,5 @@
+package org.example;
+
 import java.io.*;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -10,10 +12,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class Ledger {
-
-
     private final List<Transaction> transactions;
-
+    String fileName = "transactions.csv";
     public Ledger() {
         transactions = new ArrayList<>();
     }
@@ -26,7 +26,6 @@ public class Ledger {
         return transactions;
     }
 
-    String fileName = "transactions.csv";
 
     public void readTransactionFile(String filename) {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
