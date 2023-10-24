@@ -1,15 +1,18 @@
 import java.io.*;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Ledger {
 
 
-    private List<Transaction> transactions;
+    private final List<Transaction> transactions;
 
     public Ledger() {
         transactions = new ArrayList<>();
@@ -38,7 +41,7 @@ public class Ledger {
                 String description = fields[2];
                 String vendor = fields[3];
                 Double amount = Double.parseDouble(fields[4]);
-                Transaction transaction = new Transaction(date, time, description, vendor, (double) amount);
+                Transaction transaction = new Transaction(date, time, description, vendor, amount);
                 addTransaction(transaction);
 
             }
@@ -47,7 +50,6 @@ public class Ledger {
             System.out.println("Error");
 
         }
-        ;
 
     }
 
@@ -76,19 +78,23 @@ public class Ledger {
                 Transaction payment = new Transaction(date, time, description, vendor, amount);
                 addTransaction(payment);
                 System.out.println("Added!");
+
+
                 try {
-                    FileWriter filewriter = new FileWriter("transactions.csv, true");
+                    FileWriter filewriter = new FileWriter("transactions.csv", true);
                     filewriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
                     filewriter.close();
+
                 } catch (IOException e) {
                     System.out.println("file writer unsuccessful");
                 }
+                break;
 
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            } catch (DateTimeException e) {
+                System.out.println("date and time error");
             }
         }
-
     }
+
+    
 }

@@ -2,12 +2,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Transaction {
-    private LocalDate date;
-    private LocalTime time;
-    private String description;
-    private String vendor;
-    private double amount;
-    private String type;
+    private final LocalDate date;
+    private final LocalTime time;
+    private final String description;
+    private final String vendor;
+    private final double amount;
+    private final String type;
 
     public LocalDate getDate() {
         return date;
