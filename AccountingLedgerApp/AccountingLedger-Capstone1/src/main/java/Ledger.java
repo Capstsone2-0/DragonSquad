@@ -96,5 +96,38 @@ public class Ledger {
         }
     }
 
-    
+    public void addDeposit() {
+        while (true) {
+
+            try {
+                System.out.println(" enter deposit date yyyy-MM-dd : ");
+                LocalDate date = LocalDate.parse((scanner.nextLine()));
+                System.out.println("Enter time HH:mm:ss: ");
+                LocalTime time = LocalTime.parse(scanner.nextLine());
+                System.out.println("Enter description: ");
+                String description = scanner.nextLine();
+                System.out.println("Enter vendor: ");
+                String vendor = scanner.nextLine();
+                System.out.println("Enter amount: ");
+                double amount = scanner.nextDouble();
+                scanner.nextLine();
+                Transaction deposit = new Transaction(date, time, description, vendor, amount);
+                addTransaction(deposit);
+                System.out.println("Deposit added");
+                try {
+                    FileWriter fileWrite = new FileWriter("transactions.csv", true);
+                    fileWrite.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
+                    fileWrite.flush();
+                    fileWrite.close();
+                } catch (IOException e) {
+                    System.out.println("Failed to write to file. ");
+
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
 }
