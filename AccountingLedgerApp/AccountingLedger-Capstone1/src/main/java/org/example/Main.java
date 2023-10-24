@@ -6,7 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
          Scanner scanner = new Scanner(System.in);
-        
+         Ledger ledger = new Ledger();
+
 
         System.out.println(" HOME ");
         System.out.println("-------------------------");
@@ -16,30 +17,21 @@ public class Main {
             System.out.println("Select option:");
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment(Debit)");
-            System.out.println("L) org.example.Ledger");
+            System.out.println("L) Ledger");
             System.out.println("X) Exit");
             System.out.print("Enter your choice: ");
             String choice = scanner.next().toUpperCase();
 
             switch (choice) {
                 case "D":
-                    System.out.println("\nEnter deposit information:");
-                    System.out.print("Date (YYYY-MM-DD): ");
-                    String date = scanner.next();
-                    System.out.print("Time (HH:MM:SS): ");
-                    String time = scanner.next();
-                    System.out.print("Description: ");
-                    String description = scanner.next();
-                    System.out.print("Vendor: ");
-                    String vendor = scanner.next();
-                    System.out.print("Amount: ");
-                    double amount = scanner.nextDouble();
-                    // add deposit
-                   // Deposit deposit = new Deposit(date, time, description, vendor, amount);
+
+                    ledger.addDeposit();
 
 
                     System.out.println("\nDeposit added!");
                     break;
+                case  "P":
+                    ledger.makePayment();
                 case "L":
                     System.out.println("\norg.example.Ledger Options:");
                     System.out.println("A) All");
@@ -52,7 +44,14 @@ public class Main {
                     System.out.print("Please enter your choice: ");
                     String ledgerChoice = scanner.next().toUpperCase();
                 break;
-
+                case "X":
+                    System.out.println("Exiting the application");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
             }
         }
     }
