@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-       // Ledger ledger = new Ledger();
+        // Ledger ledger = new Ledger();
         System.out.println(" HOME ");
         System.out.println("-------------------------");
 
@@ -32,7 +32,7 @@ public class Main {
                     String vendor = scanner.next();
                     System.out.print("Amount: ");
                     double amount = scanner.nextDouble();
-                   // add deposit
+                    // add deposit
                     System.out.println("\nDeposit added!");
                     break;
                 case "L":
@@ -46,24 +46,9 @@ public class Main {
 
                     System.out.print("Please enter your choice: ");
                     String ledgerChoice = scanner.next().toUpperCase();
+                break;
 
-                    switch (ledgerChoice) {
-                        case "A":
-                            System.out.println("\nAll Transactions:");
-                           // add transactuion method
-                            //    then print it
-                            }
-                            break;
-
-
-                        case "0":
-                            break;
-
-                        default:
-                            System.out.println("Invalid choice. Please try again.");
-                        //might need a default
             }
-
         }
     }
 }

@@ -34,7 +34,7 @@ public class Ledger {
               LocalTime time = LocalTime.parse(fields[1], timeFormatter);
               String description = fields[2];
               String vendor = fields[3];
-              float amount = Float.parseFloat(fields[4]);
+              Double amount = Double.parseDouble(fields[4]);
               Transaction transaction = new Transaction(date, time, description, vendor, (double) amount);
               addTransaction(transaction);
 
