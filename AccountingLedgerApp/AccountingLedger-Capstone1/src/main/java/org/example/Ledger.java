@@ -127,6 +127,20 @@ public class Ledger {
             }
         }
     }
+      // displayed, transactions, Deposits, payment, Reports(once completed), search ny vendor
+    public void displayAllTransactions() {
+
+    }
+    public void displayDeposits() {
+
+    }
+    public void displayPayment() {
+
+    }
+
+    public void displayReports() {
+
+    }
 
 
 }

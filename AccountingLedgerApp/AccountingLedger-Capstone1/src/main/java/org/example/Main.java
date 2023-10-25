@@ -9,8 +9,16 @@ public class Main {
          Ledger ledger = new Ledger();
 
 
-        System.out.println(" HOME ");
-        System.out.println("-------------------------");
+        System.out.println("""
+     _____________________________________________
+    | ✨ Welcome To My Accounting Ledger App! ✨|
+     ---------------------------------------------
+    """);
+        System.out.println("""
+      +++++++++
+    | 🏦 HOME 🏦|
+      +++++++++
+    """);
 
         while (true) {
 
