@@ -177,6 +177,45 @@ public class Ledger {
     }
     Reports reports = new Reports();
 
+    public void LedgerScreen() {
+        try {
+        System.out.println("Ledger Options:");
+        System.out.println("A) All");
+        System.out.println("D) Deposits");
+        System.out.println("P) Payments");
+        System.out.println("R) org.example.Reports");
+        System.out.println("0) Back");
+        System.out.println("H) Home");
+
+        System.out.print("Please enter your choice: ");
+            System.out.println("Please enter your selection: ");
+
+            String choice = scanner.nextLine();
+
+            switch (choice.toUpperCase()) {
+                case "A":
+                    displayAllTransactions();
+                    break;
+                case "D":
+                    displayDeposits();
+                    break;
+                case "P":
+                    displayPayment();
+                    break;
+                case "R":
+                    reports.showReports(transactions);
+                    break;
+                case "H":
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("There was an error");
+        }
+    }
+
 
 
 }
