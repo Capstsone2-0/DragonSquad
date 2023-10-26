@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.List;
 import java.util.Scanner;
 import java.time.LocalDate;
@@ -6,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Reports {
-    public  void showReports(List<Transaction> transactions) {
+    public void showReports(List<Transaction> transactions) {
         while (true) {
 
             System.out.println("Select option:");
@@ -47,7 +48,7 @@ public class Reports {
 
                     break;
 
-                    //monthToDate
+                //monthToDate
 
                 case 2:
                     // previousMonth
@@ -105,12 +106,34 @@ public class Reports {
                             }
 
                         }
-                    } if (lastYearTransactions.isEmpty()) {
-                    System.out.println("No transactions found. ");
-                }
+                    }
+                    if (lastYearTransactions.isEmpty()) {
+                        System.out.println("No transactions found. ");
+                    }
                     break;
                 case 5:
 //                TransactionsByVendor
+                    System.out.println("Please enter the vendor: ");
+                    scanner.nextLine();
+                    String searchVendor = scanner.nextLine();
+                    List<Transaction> vendorTransactions = new ArrayList<>();
+                    for (Transaction transaction : transactions) {
+                        if (searchVendor.equalsIgnoreCase(transaction.getVendor())) {
+                            vendorTransactions.add(transaction);
+                        }
+                    }
+
+                    System.out.println("Transactions for vendor: " + searchVendor);
+                    for (Transaction transaction : vendorTransactions) {
+                        System.out.println(transaction.getType() + " " + transaction.getDate() + " " + transaction.getTime() + " " + transaction.getDescription() + " " + transaction.getVendor() + " $" + transaction.getAmount());
+                    }
+
+                    if (vendorTransactions.isEmpty()) {
+                        System.out.println("No transactions found. ");
+                    }
+
+                    break;
+
                 case 6:
                     break;
 

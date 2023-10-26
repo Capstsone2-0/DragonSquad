@@ -124,6 +124,7 @@ public class Ledger {
                     System.out.println("Failed to write to file. ");
 
                 }
+                break;
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
