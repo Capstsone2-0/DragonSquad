@@ -5,20 +5,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-         Scanner scanner = new Scanner(System.in);
-         Ledger ledger = new Ledger();
+        Scanner scanner = new Scanner(System.in);
+        Ledger ledger = new Ledger();
 
 
         System.out.println("""
-     _____________________________________________
-    | ✨ Welcome To My Accounting Ledger App! ✨|
-     ---------------------------------------------
-    """);
+                 _____________________________________________
+                | ✨ Welcome To My Accounting Ledger App! ✨|
+                 ---------------------------------------------
+                """);
         System.out.println("""
-      +++++++++
-    | 🏦 HOME 🏦|
-      +++++++++
-    """);
+                  +++++++++
+                | 🏦 HOME 🏦|
+                  +++++++++
+                """);
 
         while (true) {
 
@@ -38,20 +38,12 @@ public class Main {
 
                     System.out.println("\nDeposit added!");
                     break;
-                case  "P":
+                case "P":
                     ledger.makePayment();
+                    break;
                 case "L":
-                    System.out.println("\norg.example.Ledger Options:");
-                    System.out.println("A) All");
-                    System.out.println("D) Deposits");
-                    System.out.println("P) Payments");
-                    System.out.println("R) org.example.Reports");
-                    System.out.println("0) Back");
-                    System.out.println("H) Home");
-
-                    System.out.print("Please enter your choice: ");
-                    String ledgerChoice = scanner.next().toUpperCase();
-                break;
+                    showLedgersScreen(scanner);
+                    break;
                 case "X":
                     System.out.println("Exiting the application");
                     scanner.close();
@@ -62,5 +54,18 @@ public class Main {
                     break;
             }
         }
+    }
+
+    private static void showLedgersScreen(Scanner scanner) {
+        System.out.println("Ledger Options:");
+        System.out.println("A) All");
+        System.out.println("D) Deposits");
+        System.out.println("P) Payments");
+        System.out.println("R) org.example.Reports");
+        System.out.println("0) Back");
+        System.out.println("H) Home");
+
+        System.out.print("Please enter your choice: ");
+        String ledgerChoice = scanner.next().toUpperCase();
     }
 }

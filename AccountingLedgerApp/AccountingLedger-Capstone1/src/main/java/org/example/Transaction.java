@@ -9,7 +9,7 @@ public class Transaction {
     private final String description;
     private final String vendor;
     private final double amount;
-    private final String type;
+    private String type;
 
     public LocalDate getDate() {
         return date;
@@ -30,7 +30,12 @@ public class Transaction {
     public double getAmount() {
         return amount;
     }
-
+    public String getType(){
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, Double amount) {
         this.date = date;
         this.time = time;
@@ -60,7 +65,7 @@ public class Transaction {
         }
     }
     class Payment extends Transaction {
-        public Payment(LocalDate date, LocalTime time, String description, String vendor, float amount)  {
+        public Payment(LocalDate date, LocalTime time, String description, String vendor, double amount)  {
             super(date, time, description, vendor, (double) amount);
         }
     }

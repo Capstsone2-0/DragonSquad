@@ -82,6 +82,7 @@ public class Ledger {
                 try {
                     FileWriter filewriter = new FileWriter("transactions.csv", true);
                     filewriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
+                    filewriter.flush();
                     filewriter.close();
 
                 } catch (IOException e) {
@@ -92,6 +93,7 @@ public class Ledger {
             } catch (DateTimeException e) {
                 System.out.println("date and time error");
             }
+            break;
         }
     }
 
@@ -129,13 +131,50 @@ public class Ledger {
     }
       // displayed, transactions, Deposits, payment, Reports(once completed), search ny vendor
     public void displayAllTransactions() {
+        System.out.println("These are your Transactions: ");
+        if (transactions.size() == 0) {
+            System.out.println("no transactions");
+        } else {
+            for (Transaction transaction : transactions) {
+                System.out.printf("%f\n", transaction.getAmount());
+                System.out.printf("%f\n", transaction.getDate());
+                System.out.printf("%f\n", transaction.getTime());
+                System.out.printf("%f\n", transaction.getDescription());
+                System.out.printf("%f\n", transaction.getVendor());
+            }
+        }
+
+
 
     }
     public void displayDeposits() {
-
+        System.out.println("Here are your deposits: ");
+        for (Transaction transaction : transactions) {
+            if (transaction.getAmount() > 0) {
+                System.out.println(transaction.getDate() + " " + transaction.getDescription() + " " + transaction.getTime() + " " + transaction.getVendor() + " $" + transaction.getAmount());
+            }
+        }
     }
     public void displayPayment() {
+        System.out.println("Here are your payments: ");
+        for (Transaction transaction : transactions) {
+            if (transaction.getAmount() < 0) {
+                System.out.println(transaction.getDate() + " " + transaction.getDescription() + " " + transaction.getTime() + " " + transaction.getVendor() + " $" + transaction.getAmount());
+            }
+        }
 
+    }
+
+    public void determineType() {
+        for (Transaction transaction : transactions) {
+            if (transaction.getAmount() > 0.0f) {
+
+                transaction.setType("Deposit");
+
+            } else {
+                transaction.setType("Payment");
+            }
+        }
     }
 
     public void displayReports() {
