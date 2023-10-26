@@ -56,46 +56,46 @@ public class Ledger {
     Scanner scanner = new Scanner(System.in);
 
     public void makePayment() {
-
         while (true) {
             try {
-                System.out.println("enter payment using  yyyy-MM-dd :");
+                System.out.println("Enter payment date (yyyy-MM-dd): ");
                 LocalDate date = LocalDate.parse(scanner.nextLine());
 
-                System.out.print("Enter time HH:mm:ss : ");
+                System.out.print("Enter time (HH:mm:ss): ");
                 LocalTime time = LocalTime.parse(scanner.nextLine());
 
-                System.out.print("Description:");
+                System.out.print("Description: ");
                 String description = scanner.nextLine();
 
-                System.out.println("Vendor: ");
+                System.out.print("Vendor: ");
                 String vendor = scanner.nextLine();
 
-                System.out.println("Enter Amount: ");
+                System.out.print("Enter Amount: ");
                 Double amount = scanner.nextDouble();
                 scanner.nextLine();
-                Transaction payment = new Transaction(date, time, description, vendor, amount);
+
+                Transaction payment = new Transaction(date, time, description, vendor, -amount); // Negative amount for payment
                 addTransaction(payment);
-                System.out.println("Added!");
+                System.out.println("Payment added successfully!");
 
-
-                try {
-                    FileWriter filewriter = new FileWriter("transactions.csv", true);
-                    filewriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
-                    filewriter.flush();
-                    filewriter.close();
-
+                // Write to file
+                try (FileWriter fileWriter = new FileWriter(fileName, true)) {
+                    fileWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + -amount + "\n");
+                    fileWriter.flush();
                 } catch (IOException e) {
-                    System.out.println("file writer unsuccessful");
+                    System.out.println("Failed to write to file: " + e.getMessage());
                 }
+
                 break;
 
             } catch (DateTimeException e) {
-                System.out.println("date and time error");
+                System.out.println("Invalid date or time format. Please use yyyy-MM-dd for date and HH:mm:ss for time.");
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
             }
-            break;
         }
-    }
+
+  }
 
     public void addDeposit() {
         while (true) {
@@ -133,7 +133,7 @@ public class Ledger {
       // displayed, transactions, Deposits, payment, Reports(once completed), search ny vendor
     public void displayAllTransactions() {
         System.out.println("These are your Transactions: ");
-        if (transactions.size() == 0) {
+        if (transactions.size() <= 0) {
             System.out.println("no transactions");
         } else {
             for (Transaction transaction : transactions) {
@@ -142,6 +142,8 @@ public class Ledger {
                 System.out.printf("%f\n", transaction.getTime());
                 System.out.printf("%f\n", transaction.getDescription());
                 System.out.printf("%f\n", transaction.getVendor());
+                System.out.printf("%f\n", transaction.getType());
+                System.out.println("-----------------------------------------------");
             }
         }
 

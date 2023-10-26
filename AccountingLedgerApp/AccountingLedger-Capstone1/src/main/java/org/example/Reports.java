@@ -16,6 +16,7 @@ public class Reports {
             System.out.println("3) Year To Date");
             System.out.println("4) Previous year");
             System.out.print("5) Search by vendor: ");
+            System.out.println("Enter Choice: ");
             //String choice = scanner.next().toUpperCase();
             Scanner scanner = new Scanner(System.in);
             int choices = scanner.nextInt();
@@ -135,6 +136,45 @@ public class Reports {
                     break;
 
                 case 6:
+                    System.out.println("Custom Search:");
+                    System.out.println("Start Date (yyyy-MM-dd)");
+                    scanner.nextLine();
+                    String searchStartDateStr = scanner.nextLine();
+                    LocalDate searchStartDate = LocalDate.parse(searchStartDateStr, DateTimeFormatter.ISO_LOCAL_DATE);
+                    System.out.println("End Date (yyyy-MM-dd)");
+                    String searchEndDateStr = scanner.nextLine();
+                    LocalDate searchEndDate = LocalDate.parse(searchEndDateStr, DateTimeFormatter.ISO_LOCAL_DATE);
+
+                    System.out.println("Description: ");
+                    String searchDescription = scanner.nextLine();
+
+                    System.out.println("Vendor: ");
+                    String customSearchVendor = scanner.nextLine();
+                    System.out.println("Amount: ");
+                    double searchAmount = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    List<Transaction> customSearchTransactions = new ArrayList<>();
+                    for (Transaction transaction : transactions) {
+                        if ((transaction.getDate().isAfter(searchStartDate) ||
+                                transaction.getDate().isEqual(searchStartDate) && transaction.getDate().isBefore(searchEndDate) ||
+                                transaction.getDate().isEqual(searchEndDate)) &&
+                                transaction.getVendor().equalsIgnoreCase(customSearchVendor) &&
+                                transaction.getDescription().equalsIgnoreCase(searchDescription) && transaction.getAmount() == searchAmount) {
+                            customSearchTransactions.add(transaction);
+
+                        }
+                    }
+
+                    if (!customSearchTransactions.isEmpty()) {
+                        System.out.println("Custom Search Results: ");
+                        for (Transaction customTransaction : customSearchTransactions) {
+                            System.out.println(customTransaction.getType() + " " + customTransaction.getDate() + " " + customTransaction.getTime() + " " + customTransaction.getDescription() + " " + customTransaction.getVendor() + " $" + customTransaction.getAmount());
+                        }
+                    } else {
+                        System.out.println("No transactions found. ");
+                    }
+
                     break;
 
             }

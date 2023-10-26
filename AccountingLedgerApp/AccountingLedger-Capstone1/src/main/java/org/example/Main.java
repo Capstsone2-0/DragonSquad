@@ -1,12 +1,14 @@
 package org.example;
 
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         Ledger ledger = new Ledger();
+       // ledger.readTransactionFile(ledger.fileName);
 
 
         System.out.println("""
@@ -14,10 +16,16 @@ public class Main {
                 | ✨ Welcome To My Accounting Ledger App! ✨|
                  ---------------------------------------------
                 """);
+//        System.out.println("""
+//                  +++++++++
+//                | 🏦 HOME 🏦|
+//                  +++++++++
+//                """);
         System.out.println("""
-                  +++++++++
-                | 🏦 HOME 🏦|
-                  +++++++++
+                ==================================
+                     🏦     HOME MENU   🏦
+                ==================================
+                Choose by letter:
                 """);
 
         while (true) {
