@@ -145,7 +145,6 @@ public class Ledger {
         }
 
 
-
     }
     public void displayDeposits() {
         System.out.println("Here are your deposits: ");
@@ -176,10 +175,8 @@ public class Ledger {
             }
         }
     }
+    Reports reports = new Reports();
 
-    public void displayReports() {
-
-    }
 
 
 }
