@@ -27,8 +27,14 @@ The Ledger Screen provides options to view transaction entries based on differen
    - **5) Search by Vendor:** Enter a vendor name to view related transactions.
    - **0) Back:** Return to the Reports menu.
    - **H) Home:** Go back to the Home Screen.
+ 
+     ![Image Alt Text](image-url.jpg)
      
 Example of Transactiond: date|time|description|vendor|amount
 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
 2023-04-15|11:15:00|Invoice 1001 paid|Joe|1500.00
- 
+
+ ## Acknowledgements
+Credits to Paul, and the Pig room for all the help.
+
+
