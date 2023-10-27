@@ -11,7 +11,15 @@ Upon launching the application, users are presented with the following options:
 - **P) Make Payment(Debit):** Record a new payment transaction.
 - **L) Ledger:** View transaction entries, categorized and sorted.
 - **X) Exit:** Close the application.
+   **Follow On-Screen Instructions:**
+- Select options from the Home Screen.
+- Enter details for deposits and payments as prompted.
+- Explore ledger entries and generate reports.
 
+ **Exit the Application:**
+- Select `X` from the Home Screen.
+
+  
 ### Ledger Screen
 
 The Ledger Screen provides options to view transaction entries based on different filters:
