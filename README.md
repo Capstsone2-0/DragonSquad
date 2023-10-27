@@ -29,7 +29,7 @@ The Ledger Screen provides options to view transaction entries based on differen
    - **H) Home:** Go back to the Home Screen.
  
  
-     <img src="cmndline.png" alt="Image Alt Text" style="width:200px; height:150px;">
+     <img src="cmndline.png" alt="Image Alt Text" style="width:400px; height:250px;">
 
      
 Example of Transactiond: date|time|description|vendor|amount
