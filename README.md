@@ -49,6 +49,6 @@ Example of Transactiond: date|time|description|vendor|amount
 - Workbook 1-3
 
  ## Acknowledgements
-Credits to Paul, and the Pig room for all the help.
+Credits to Paul, and peers room for all the help.
 
 
