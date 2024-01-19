@@ -37,6 +37,8 @@ public class Ledger {
                 String[] fields = line.split("\\|");
                 LocalDate date = LocalDate.parse(fields[0], dateFormatter);
                 LocalTime time = LocalTime.parse(fields[1], timeFormatter);
+                System.out.println("localDate:" + date);
+                System.out.println("localtime:" +time);
                 String description = fields[2];
                 String vendor = fields[3];
                 Double amount = Double.parseDouble(fields[4]);
@@ -133,16 +135,17 @@ public class Ledger {
       // displayed, transactions, Deposits, payment, Reports(once completed), search ny vendor
     public void displayAllTransactions() {
         System.out.println("These are your Transactions: ");
+        readTransactionFile(this.fileName);
         if (transactions.size() <= 0) {
             System.out.println("no transactions");
         } else {
             for (Transaction transaction : transactions) {
                 System.out.printf("%f\n", transaction.getAmount());
-                System.out.printf("%f\n", transaction.getDate());
-                System.out.printf("%f\n", transaction.getTime());
-                System.out.printf("%f\n", transaction.getDescription());
-                System.out.printf("%f\n", transaction.getVendor());
-                System.out.printf("%f\n", transaction.getType());
+                System.out.println( transaction.getDate());
+                System.out.println( transaction.getTime());
+                System.out.printf("%s\n", transaction.getDescription());
+                System.out.printf("%s\n", transaction.getVendor());
+                System.out.printf("%s\n", transaction.getType());
                 System.out.println("-----------------------------------------------");
             }
         }
