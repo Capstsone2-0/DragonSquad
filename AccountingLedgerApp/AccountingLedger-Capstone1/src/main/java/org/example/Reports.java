@@ -15,7 +15,8 @@ public class Reports {
             System.out.println("2) Previous Month)");
             System.out.println("3) Year To Date");
             System.out.println("4) Previous year");
-            System.out.print("5) Search by vendor: ");
+            System.out.println("5) Search by vendor: ");
+            System.out.println("0) To go back");
             System.out.println("Enter Choice: ");
             //String choice = scanner.next().toUpperCase();
             Scanner scanner = new Scanner(System.in);
@@ -23,6 +24,7 @@ public class Reports {
             LocalDate currentDate = LocalDate.now();
             int currentMonth = currentDate.getMonthValue();
             int currentYear = currentDate.getYear();
+
 
 
 //            private static String choices = "0";
@@ -53,23 +55,31 @@ public class Reports {
 
                 case 2:
                     // previousMonth
-                    LocalDate firstDayOfPrevMonth = LocalDate.of(currentYear, currentMonth - 1, 1);
-                    LocalDate lastDayOfPrevMonth = firstDayOfPrevMonth.withDayOfMonth(firstDayOfPrevMonth.lengthOfMonth());
+                    int prevMonth = (currentMonth == 1) ? 12 : currentMonth - 1; //if month is 1 then previous month will be 12 of previous year
+                    int prevYear = (currentMonth == 1) ? currentYear - 1 : currentYear; //if month is 1 then previous month will be from previous year
+
                     List<Transaction> prevMonthTransactions = new ArrayList<>();
+
                     for (Transaction transaction : transactions) {
                         LocalDate transactionDate = transaction.getDate();
 
-                        if (transactionDate.isAfter(firstDayOfPrevMonth.minusDays(1)) && transactionDate.isBefore(lastDayOfPrevMonth.plusDays(1))) {
+                        if (transactionDate.getYear() == prevYear && transactionDate.getMonthValue() == prevMonth) { //check year and month and add in list
                             prevMonthTransactions.add(transaction);
-
-                        } else if (prevMonthTransactions.isEmpty()) {
-                            System.out.println("No transactions found. ");
                         }
                     }
-                    System.out.println("Previous month transactions: ");
-                    for (Transaction prevMonthTransaction : prevMonthTransactions) {
-                        System.out.println(prevMonthTransaction.getType() + " " + prevMonthTransaction.getDate() + " " + prevMonthTransaction.getDescription() + " " + prevMonthTransaction.getVendor() + " $" + prevMonthTransaction.getAmount());
+
+                    // Check if transactions were found before printing
+                    if (prevMonthTransactions.isEmpty()) {
+                        System.out.println("No transactions found for the previous month.");
+                    } else {
+                        System.out.println("Previous month transactions: ");
+                        for (Transaction prevMonthTransaction : prevMonthTransactions) {
+                            System.out.println(prevMonthTransaction.getType() + " " + prevMonthTransaction.getDate() + " " +
+                                    prevMonthTransaction.getDescription() + " " + prevMonthTransaction.getVendor() + " $" +
+                                    prevMonthTransaction.getAmount());
+                        }
                     }
+
                     break;
                 case 3:
                     // yearToDate
@@ -94,20 +104,25 @@ public class Reports {
                     break;
                 case 4:
                     //lastYearsTransactions
-                    LocalDate lastYear = currentDate.withYear(currentYear - 1);
+                    int lastYear = currentDate.getYear()-1; //getting only year
                     List<Transaction> lastYearTransactions = new ArrayList<>();
+
                     for (Transaction transaction : transactions) {
                         LocalDate transactionDate = transaction.getDate();
-                        if (transactionDate.isEqual(lastYear)) {
+
+                        if (transactionDate.getYear() == lastYear) { //comparing only year
                             lastYearTransactions.add(transaction);
-
-                            System.out.println("Last Year's transactions: ");
-                            for (Transaction lastYearTransaction : lastYearTransactions) {
-                                System.out.println(lastYearTransaction.getType() + " " + lastYearTransaction.getDate() + " " + lastYearTransaction.getDescription() + " " + lastYearTransaction.getVendor() + " $" + lastYearTransaction.getAmount());
-                            }
-
                         }
+
                     }
+
+                    System.out.println("Last Year's transactions: ");
+                    for (Transaction lastYearTransaction : lastYearTransactions) {
+                        System.out.println(lastYearTransaction.getType() + " " + lastYearTransaction.getDate() + " " +
+                                lastYearTransaction.getDescription() + " " + lastYearTransaction.getVendor() +
+                                " $" + lastYearTransaction.getAmount());
+                    }
+
                     if (lastYearTransactions.isEmpty()) {
                         System.out.println("No transactions found. ");
                     }
@@ -176,6 +191,10 @@ public class Reports {
                     }
 
                     break;
+
+                case 0:
+                    return;
+
 
             }
         }
