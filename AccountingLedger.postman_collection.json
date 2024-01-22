@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "get all transactions",
 			"request": {
 				"method": "GET",
 				"header": []
@@ -15,7 +15,7 @@
 			"response": []
 		},
 		{
-			"name": "{{baseurl}}/deposit",
+			"name": "all deposit",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -32,7 +32,7 @@
 			"response": []
 		},
 		{
-			"name": "{{baseurl}}/payment",
+			"name": "all payment",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -43,6 +43,141 @@
 					],
 					"path": [
 						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDeposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2024-01-23\",\n    \"time\": \"12:23:20\",\n    \"vendor\": \"T-mobile\",\n    \"description\": \"mobile charge\",\n    \"amount\" : \"130.00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/addDeposit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addDeposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Payment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2023-12-23\",\n    \"time\": \"10:13:20\",\n    \"vendor\": \"Verizon\",\n    \"description\": \"Wifi\",\n    \"amount\" : \"130.00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/addPayment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Month To date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mtd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mtd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Previous Year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/py",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"py"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Previous Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Year To date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ytd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ytd"
 					]
 				}
 			},
