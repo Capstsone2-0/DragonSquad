@@ -1,4 +1,4 @@
-package com.pluralsight.AccountingLedger.data.mysql;
+package com.pluralsight.AccountingLedger.data;
 
 import com.pluralsight.AccountingLedger.models.Transactions;
 
@@ -19,4 +19,7 @@ public interface TransactionDao {
 
     List<Transactions> getPreviousYear();
 
+    Transactions create(Transactions t);
+
+    Transactions createPayment(Transactions t);
 }

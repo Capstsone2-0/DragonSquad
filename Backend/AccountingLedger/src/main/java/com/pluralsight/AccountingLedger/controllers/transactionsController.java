@@ -1,9 +1,11 @@
 package com.pluralsight.AccountingLedger.controllers;
 
-import com.pluralsight.AccountingLedger.data.mysql.TransactionDao;
+import com.pluralsight.AccountingLedger.data.TransactionDao;
 import com.pluralsight.AccountingLedger.models.Transactions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.security.PermitAll;
 import java.util.List;
@@ -38,7 +40,7 @@ public class transactionsController {
     }
 
     @GetMapping("mtd")
-            public List<Transactions> getMonthToDate()
+    public List<Transactions> getMonthToDate()
     {
         return transactionDao.getMonthToDate();
     }
@@ -59,6 +61,32 @@ public class transactionsController {
     public List<Transactions> getPreviousYear()
     {
         return transactionDao.getPreviousYear();
+    }
+
+    @PostMapping("addDeposit")
+    public Transactions addDeposit(@RequestBody Transactions t)
+    {
+        try
+        {
+            return transactionDao.create(t);
+        }
+        catch(Exception ex)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+    }
+
+    @PostMapping("addPayment")
+    public  Transactions addPayment(@RequestBody Transactions t)
+    {
+        try
+        {
+            return transactionDao.createPayment(t);
+        }
+        catch(Exception ex)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
     }
 
 }

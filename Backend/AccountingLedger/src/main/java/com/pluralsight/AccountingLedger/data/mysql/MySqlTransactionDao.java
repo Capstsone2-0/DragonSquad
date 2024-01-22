@@ -4,17 +4,14 @@ import com.pluralsight.AccountingLedger.models.Transactions;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class MySqlTransactionDao extends MySqlDaoBase implements com.pluralsight.AccountingLedger.data.mysql.TransactionDao {
+public class MySqlTransactionDao extends MySqlDaoBase implements com.pluralsight.AccountingLedger.data.TransactionDao {
 
 
     public MySqlTransactionDao(DataSource dataSource)
@@ -177,6 +174,100 @@ public class MySqlTransactionDao extends MySqlDaoBase implements com.pluralsight
         return res;
     }
 
+    @Override
+    public Transactions create(Transactions t) {
+
+        String sql = "INSERT INTO transactions(date, time, vendor, description, amount) " +
+                " VALUES (?, ?, ?, ?, ?);";
+
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setDate(1, Date.valueOf(t.getDate()));
+            statement.setString(2, String.valueOf(t.getTime()));
+            statement.setString(3, t.getVendor());
+            statement.setString(4, t.getDescription());
+            statement.setDouble(5, t.getAmount());
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Retrieve the generated keys
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+
+                if (generatedKeys.next()) {
+                    // Retrieve the auto-incremented ID
+                    int orderId = generatedKeys.getInt(1);
+
+                    // get the newly inserted category
+                    return getById(orderId);
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public Transactions createPayment(Transactions t) {
+        String sql = "INSERT INTO transactions(date, time, vendor, description, amount) " +
+                " VALUES (?, ?, ?, ?, ?);";
+
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setDate(1, Date.valueOf(t.getDate()));
+            statement.setString(2, String.valueOf(t.getTime()));
+            statement.setString(3, t.getVendor());
+            statement.setString(4, t.getDescription());
+            statement.setDouble(5, t.getAmount()*-1);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Retrieve the generated keys
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+
+                if (generatedKeys.next()) {
+                    // Retrieve the auto-incremented ID
+                    int orderId = generatedKeys.getInt(1);
+
+                    // get the newly inserted category
+                    return getById(orderId);
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    private Transactions getById(int orderId) {
+        String sql = "SELECT * FROM transactions WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, orderId); // Set the parameter for the query
+
+            try (ResultSet row = statement.executeQuery()) {
+                if (row.next()) {
+                    Transactions t = mapRow(row);
+                    return t;
+                }
+                // If no rows are found, return null or handle it as appropriate for your application
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        // Return null explicitly if no result is found
+        return null;
+    }
+
+
 
     private Transactions mapRow(ResultSet row) throws SQLException
     {
@@ -189,6 +280,6 @@ public class MySqlTransactionDao extends MySqlDaoBase implements com.pluralsight
         String vendor = row.getString("vendor");
         double amount = row.getDouble("amount");
 
-         return new Transactions(id, date, t, description, vendor, amount);
+        return new Transactions(id, date, t, description, vendor, amount);
     }
 }
