@@ -1,0 +1,50 @@
+.contentsOfLedger{
+    background-color: #D9EDF8;
+    border-radius: 25px;
+    width: 90%;
+    margin: 2% auto;
+    padding: 1%;
+}
+.first_part{
+    margin: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.selection{
+    display: flex;
+    flex-direction: column;
+}
+#transactionType{
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: #f4f6fb;
+}
+.displayingLists{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.headerPart{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2%;
+    border-bottom: 1px solid black;
+}
+li{
+    font-style: none;
+    text-decoration: none;
+    list-style-type: none;
+    
+}
+
+.itemInList{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+
+}
