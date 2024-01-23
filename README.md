@@ -44,8 +44,20 @@ The Ledger Screen provides options to view transaction entries based on differen
 ## Frontend Pictures
 
 ### Deposit
-    <img src="images/deposit.webp" width="500" height="400">
+    
+<img src="images/deposit.png" width="700" height="400">
 
+### Payment
+
+<img src="images/payment.png" width="700" height="400">
+
+### All Transactions
+
+<img src="images/allTransactions.png" width="700" height="400">
+
+### Month To Date Transactions
+
+<img src="images/month.png" width="700" height="400">
      
 ## DRAFT
 Example of Transactiond: date|time|description|vendor|amount
