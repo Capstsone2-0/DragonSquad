@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Accounting Ledger is a fully functional ledger website with a Spring Boot API backend and a CSV files database for data storage, and ReactJS/HTML/CSS for the frontend. 
+Accounting Ledger is a fully functional ledger website with a Spring Boot API backend and an SQL database for data storage, and ReactJS/HTML/CSS for the frontend. 
 
 Accounting Ledger allows users to efficiently manage and keep track of their financial transactions. It allows users to record deposits and payments, view a ledger of all the user's financial activities, and run various financial reports.
 The project involves fixing existing bugs in the project and implementing new features, all while ensuring the frontend and backend functions smoothly.
