@@ -2,17 +2,14 @@
 
 ## Project Overview
 
-Accounting Ledger is a fully functional ledger website with a Spring Boot API backend and a CSV files database for data storage, and ReactJS/HTML/CSS for the front-end. 
+Accounting Ledger is a fully functional ledger website with a Spring Boot API backend and a CSV files database for data storage, and ReactJS/HTML/CSS for the frontend. 
 
 Accounting Ledger allows users to efficiently manage and keep track of their financial transactions. It allows users to record deposits and payments, view a ledger of all the user's financial activities, and run various financial reports.
 The project involves fixing existing bugs in the project and implementing new features, all while ensuring the frontend and backend functions smoothly.
 
-## Instructions
-**Follow On-Screen Instructions:**
-- Select options from the Home Screen.
-- Enter details for deposits and payments as prompted.
-- Explore ledger entries and generate reports.
-- To Exit the Application: Select `X` from the Home Screen.
+## Built With
+  - **Backend:** Java, CSV files
+  - **Frontend:** ReactJS, HTML, CSS
 
 ## Application Features
 
@@ -41,6 +38,26 @@ The Ledger Screen provides options to view transaction entries based on differen
    - **0) Back:** Return to the Reports menu.
    - **H) Home:** Go back to the Home Screen.
 
+## Getting Started
+
+1. Clone or download this repository to your local machine.
+
+2. Compile the Java code using your preferred Java development environment.
+
+3. Run the application in the command line.
+
+## Instructions
+**Follow On-Screen Instructions:**
+- Select options from the Home Screen.
+- Enter details for deposits and payments as prompted.
+- Explore ledger entries and generate reports.
+- Exit the Application from the Home Screen.
+
+## Usage
+- When you run the application, you'll be presented with a user-friendly menu where you can choose to add deposits, make payments, view your ledger, generate reports, or exit the application.
+
+- The ledger entries are automatically sorted by date in descending order, showing the newest transactions first, making it easy to stay up-to-date with your financial activities.
+
 ## Frontend Pictures
 
 ### Deposit
@@ -58,17 +75,15 @@ The Ledger Screen provides options to view transaction entries based on differen
 ### Month To Date Transactions
 
 <img src="images/month.png" width="700" height="400">
-     
-## DRAFT
-Example of Transactiond: date|time|description|vendor|amount
-2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
-2023-04-15|11:15:00|Invoice 1001 paid|Joe|1500.00
+    
 
- ## Resources
-- StackOver Flow
-- Workbook 1-3
+## UML Diagram
 
- ## Acknowledgements
-Credits to Paul, and peers room for all the help.
+<img src="images/uml.png" width="700" height="400">
 
+
+## Submitted By Dragon Squad
+Dragon Squad members: **Kary Martinez, Elizabeth Dookie, Dipesh Basnet, Shankar Ale Magar, Hally Amor, Tyson Hall**
+
+<img src="https://media.giphy.com/media/3o7TKrEzvLbsVAud8I/giphy.gif" width="500" height="250"/>
 
