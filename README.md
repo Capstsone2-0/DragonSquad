@@ -1,5 +1,18 @@
 # AccountingLedger-Capstone1
 
+## Project Overview
+
+Accounting Ledger is a fully functional ledger website with a Spring Boot API backend and a CSV files database for data storage, and ReactJS/HTML/CSS for the front-end. 
+
+Accounting Ledger allows users to efficiently manage and keep track of their financial transactions. It allows users to record deposits and payments, view a ledger of all the user's financial activities, and run various financial reports.
+The project involves fixing existing bugs in the project and implementing new features, all while ensuring the frontend and backend functions smoothly.
+
+## Instructions
+**Follow On-Screen Instructions:**
+- Select options from the Home Screen.
+- Enter details for deposits and payments as prompted.
+- Explore ledger entries and generate reports.
+- To Exit the Application: Select `X` from the Home Screen.
 
 ## Application Features
 
@@ -11,15 +24,7 @@ Upon launching the application, users are presented with the following options:
 - **P) Make Payment(Debit):** Record a new payment transaction.
 - **L) Ledger:** View transaction entries, categorized and sorted.
 - **X) Exit:** Close the application.
-   **Follow On-Screen Instructions:**
-- Select options from the Home Screen.
-- Enter details for deposits and payments as prompted.
-- Explore ledger entries and generate reports.
 
- **Exit the Application:**
-- Select `X` from the Home Screen.
-
-  
 ### Ledger Screen
 
 The Ledger Screen provides options to view transaction entries based on different filters:
@@ -35,11 +40,14 @@ The Ledger Screen provides options to view transaction entries based on differen
    - **5) Search by Vendor:** Enter a vendor name to view related transactions.
    - **0) Back:** Return to the Reports menu.
    - **H) Home:** Go back to the Home Screen.
- 
- 
-     <img src="cmndline.png" alt="Image Alt Text" style="width:400px; height:250px;">
+
+## Frontend Pictures
+
+### Deposit
+    <img src="images/deposit.webp" width="500" height="400">
 
      
+## DRAFT
 Example of Transactiond: date|time|description|vendor|amount
 2023-04-15|10:13:25|ergonomic keyboard|Amazon|-89.50
 2023-04-15|11:15:00|Invoice 1001 paid|Joe|1500.00
